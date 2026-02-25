@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://technestbybhavika.com"),
+  metadataBase: new URL("https://bhavikamantri.vercel.app"),
   title: "Bhavika Mantri — Cloud Security Engineer & AI Builder",
   description:
     "Cloud Security Engineer building AI-powered security agents. 5x AWS Certified. Building autonomous IAM auditing, threat detection, and incident response platforms.",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     title: "Bhavika Mantri — Cloud Security Engineer & AI Builder",
     description:
       "Cloud Security Engineer building AI-powered security agents. 5x AWS Certified.",
-    url: "https://technestbybhavika.com",
+    url: "https://bhavikamantri.vercel.app",
     images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },
 };
@@ -45,7 +46,7 @@ export default function RootLayout({
     "@type": "Person",
     name: "Bhavika Mantri",
     jobTitle: "Cloud Security Engineer",
-    url: "https://technestbybhavika.com",
+    url: "https://bhavikamantri.vercel.app",
     sameAs: [
       "https://github.com/bhavikam28",
       "https://linkedin.com/in/bhavikamantri",
@@ -72,8 +73,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[var(--background)] bg-pattern antialiased font-sans text-slate-900">
+      <body className="min-h-screen bg-white antialiased font-sans text-slate-900">
         <Navbar />
+        <ScrollToTop />
         {children}
       </body>
     </html>

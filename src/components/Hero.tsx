@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Github, Linkedin, FileText } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
+import { MediumIcon } from "./icons/MediumIcon";
 import { TerminalBlock, type TerminalLine } from "./TerminalBlock";
-import { AnimatedCounter } from "./ui/AnimatedCounter";
 
 const typingPhrases = [
-  "Building AI security agents",
+  "Securing AI agents on AWS",
   "Automating IAM policy auditing",
-  "Securing cloud infrastructure at scale",
   "From audit findings to auto-remediation",
+  "Building autonomous security platforms",
 ];
 
 const heroTerminalLines: TerminalLine[] = [
@@ -25,13 +25,6 @@ const heroTerminalLines: TerminalLine[] = [
   { text: "→ Risk level: LOW", type: "success" },
   { text: "→ 8 compliance frameworks checked ✓", type: "success" },
   { text: "→ PCI DSS: PASS | HIPAA: PASS | SOX: PASS", type: "success" },
-];
-
-const stats = [
-  { value: 5, suffix: "+ Years", label: "Experience" },
-  { value: 5, suffix: " AWS Certs", label: "Certifications" },
-  { value: 8, suffix: "+ Articles", label: "Published" },
-  { value: 3, suffix: " AI Projects", label: "Hackathon builds" },
 ];
 
 export function Hero() {
@@ -66,29 +59,30 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[85vh] flex flex-col justify-center px-6 pt-20 pb-12 overflow-hidden"
+      className="relative min-h-[85vh] flex flex-col justify-center px-6 pt-20 pb-12 overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-violet-50/40"
     >
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-violet-200/40 via-amber-100/30 to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-pattern pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row items-start gap-5">
-              <div
-                className="relative h-28 w-28 sm:h-36 sm:w-36 flex-shrink-0 rounded-full overflow-hidden ring-4 ring-amber-400 ring-offset-4"
-              >
-                <Image
-                  src="/images/bhavika.png"
-                  alt="Bhavika Mantri"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 112px, 144px"
-                  priority
-                />
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
+              <div className="relative flex-shrink-0">
+                <div className="relative h-40 w-40 sm:h-48 sm:w-48 rounded-full overflow-hidden ring-4 ring-amber-400 ring-offset-4">
+                  <Image
+                    src="/images/bhavika.png"
+                    alt="Bhavika Mantri"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 160px, 192px"
+                    priority
+                  />
+                </div>
               </div>
-              <div className="flex-1 space-y-1.5">
-                <span className="inline-block rounded-full border border-amber-300 bg-amber-100 px-4 py-1.5 text-xs font-semibold text-amber-800 tracking-wider">
-                  CLOUD SECURITY ENGINEER • AI BUILDER
+              <div className="flex-1 min-w-0 text-center sm:text-left space-y-2 flex flex-col items-center sm:items-start">
+                <span className="inline-block rounded-full border border-amber-300 bg-gradient-to-r from-amber-100 to-orange-50 px-4 py-1.5 text-xs font-semibold text-amber-800 tracking-wider">
+                  CLOUD SECURITY ENGINEER • AI SECURITY
                 </span>
                 <h1 className="text-4xl md:text-5xl font-bold text-slate-900 font-heading tracking-tight">
                   Bhavika Mantri
@@ -99,20 +93,13 @@ export function Hero() {
               <span>{displayText}</span>
               <span className="animate-pulse">|</span>
             </div>
-            <p className="max-w-xl text-slate-600 text-lg leading-relaxed">
-              From auditing cloud infrastructure to building the security tools I wished existed.
+            <p className="font-mono text-sm tracking-wide">
+              <span className="text-amber-600 font-semibold">5x AWS Certified</span>
+              <span className="text-slate-400 mx-2">|</span>
+              <span className="text-slate-700">CISA</span>
+              <span className="text-slate-400 mx-2">|</span>
+              <span className="text-slate-700">Terraform Associate</span>
             </p>
-
-            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 sm:gap-6">
-              {stats.map((s, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="font-heading font-bold text-slate-900 text-3xl">
-                    <AnimatedCounter value={s.value} suffix={s.suffix} duration={1.5} />
-                  </span>
-                  <span className="text-sm text-slate-500">{s.label}</span>
-                </div>
-              ))}
-            </div>
 
             <div className="flex flex-wrap gap-3">
               <a
@@ -123,7 +110,7 @@ export function Hero() {
               </a>
               <a
                 href="#articles"
-                className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-semibold border-2 border-slate-300 text-slate-700 hover:border-amber-500 hover:text-amber-600 transition-colors"
+                className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-semibold border-2 border-blue-300 text-blue-700 hover:border-violet-500 hover:text-violet-600 hover:bg-violet-50/50 transition-colors"
               >
                 Read Articles
               </a>
@@ -155,7 +142,7 @@ export function Hero() {
                 className="text-slate-600 hover:text-amber-600 transition-colors"
                 aria-label="Medium"
               >
-                <FileText size={22} />
+                <MediumIcon size={22} />
               </a>
             </div>
           </div>

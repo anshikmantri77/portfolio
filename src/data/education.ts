@@ -25,8 +25,7 @@ export const education: EducationItem[] = [
     id: "nitj",
     institution: "National Institute of Technology, Jalandhar",
     degree: "B.Tech",
-    field: "Engineering",
+    field: "Civil Engineering",
     dates: "2014–2018",
-    gpa: "7.7/10.0",
   },
 ];

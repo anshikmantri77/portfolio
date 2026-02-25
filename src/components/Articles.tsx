@@ -14,11 +14,11 @@ const publicationVariants: Record<string, "primary" | "secondary" | "default"> =
 };
 
 const topicGradients: Record<string, string> = {
-  architecture: "from-amber-50 to-orange-50",
-  ai: "from-amber-50 to-orange-50",
-  devops: "from-amber-50 to-orange-50",
-  security: "from-amber-50 to-orange-50",
-  migration: "from-amber-50 to-orange-50",
+  architecture: "from-blue-100 via-indigo-50 to-purple-100",
+  ai: "from-amber-100 via-orange-50 to-red-100",
+  devops: "from-green-100 via-emerald-50 to-teal-100",
+  security: "from-slate-100 via-blue-50 to-cyan-100",
+  migration: "from-violet-100 via-purple-50 to-pink-100",
 };
 
 const articleIcons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -30,6 +30,7 @@ const articleIcons: Record<string, React.ComponentType<{ className?: string }>> 
   "6": Wrench,
   "7": GitBranch,
   "8": Database,
+  "9": Shield,
 };
 
 export function Articles() {
@@ -40,7 +41,7 @@ export function Articles() {
     <section
       id="articles"
       ref={ref}
-      className="scroll-mt-20 px-6 py-24 bg-slate-50"
+      className="scroll-mt-20 px-6 py-24 bg-gradient-to-b from-slate-50 via-purple-50/20 to-slate-50"
     >
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -69,7 +70,7 @@ export function Articles() {
                 rel="noopener noreferrer"
                 className="block h-full group"
               >
-                <div className="h-full flex flex-col rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:border-amber-300">
+                <div className="h-full flex flex-col rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1">
                   <div className="aspect-video w-full relative overflow-hidden">
                     {article.coverImageUrl ? (
                       <img
@@ -81,7 +82,11 @@ export function Articles() {
                       <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${topicGradients[article.topic ?? "devops"]}`}>
                         {(() => {
                           const Icon = articleIcons[article.id] ?? Database;
-                          return <Icon className="h-12 w-12 text-amber-600" />;
+                          return (
+                            <div className="w-24 h-24 rounded-full bg-white/60 flex items-center justify-center">
+                              <Icon className="h-14 w-14 text-amber-600" />
+                            </div>
+                          );
                         })()}
                       </div>
                     )}

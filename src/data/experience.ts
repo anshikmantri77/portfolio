@@ -29,7 +29,7 @@ export const experience: ExperienceItem[] = [
     company: "",
     location: "",
     role: "Career Pause (H-4)",
-    dates: "Feb 2024 – Present",
+    dates: "Feb 2024 – Feb 2025",
     skills: [],
     bullets: [
       "Left Discover due to H-4 visa status change. Used the period to upskill: 5 AWS certifications, 3 hackathon projects, 8+ articles, and AWS She Builds mentorship.",

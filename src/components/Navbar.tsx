@@ -12,6 +12,9 @@ const navItems = [
   { label: "Projects", href: "#projects" },
   { label: "Articles", href: "#articles" },
   { label: "Certifications", href: "#certifications" },
+  { label: "Skills", href: "#skills" },
+  { label: "Education", href: "#education" },
+  { label: "Community", href: "#community" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -64,9 +67,10 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="#hero"
-          className="font-mono text-lg font-bold text-slate-900 hover:text-amber-600 transition-colors tracking-tight"
+          className="text-lg font-bold font-mono tracking-tight hover:opacity-80 transition-opacity"
         >
-          BhavikaMantri
+          <span className="text-slate-900">Bhavika</span>
+          <span className="text-amber-500">Mantri</span>
         </Link>
 
         {/* Desktop nav */}

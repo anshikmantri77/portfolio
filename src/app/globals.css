@@ -6,7 +6,7 @@
   --font-space-grotesk: "Space Grotesk", "Inter", sans-serif;
   --font-jetbrains-mono: "JetBrains Mono", ui-monospace, monospace;
   /* Light theme — dark text on light background for guaranteed readability */
-  --background: #f8fafc;
+  --background: #ffffff;
   --surface: #ffffff;
   --surface-alt: #f1f5f9;
   --primary: #b45309;
@@ -46,12 +46,11 @@
 .bg-pattern {
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgba(148, 163, 184, 0.25) 1px,
+    rgba(148, 163, 184, 0.12) 1px,
     transparent 0
   );
   background-size: 28px 28px;
   background-position: 0 0;
-  opacity: 0.6;
 }
 
 /* Gradient glow for hero */

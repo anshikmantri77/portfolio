@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Shield, Zap, Code2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { SectionHeading } from "./SectionHeading";
 import { TerminalBlock, type TerminalLine } from "./TerminalBlock";
 
@@ -18,9 +19,9 @@ const journeyLines: TerminalLine[] = [
 ];
 
 const highlights = [
-  { icon: Shield, title: "Audit → Automation", text: "I spent years in IT audit and tech advisory at Discover and FORVIS. Now I build the automation that would have made those audits faster and more consistent — IAM audits, compliance checks, and policy validation in code." },
-  { icon: Zap, title: "AI-Powered Security", text: "I build agents that reason over CloudTrail, score risk in real time, and turn natural language into least-privilege IAM. Aegis IAM and Nova Sentinel came from wanting security tooling that thinks, not just runs rules." },
-  { icon: Code2, title: "Full Stack Security", text: "From Terraform and EKS to Lambda and Bedrock, I design and implement secure systems end to end. DevSecOps pipelines, zero-credential CI, and container scanning are part of how I ship." },
+  { icon: Shield, title: "Audit-Informed Engineering", text: "3 years of IT audit at Discover and FORVIS means I build security tooling that maps to real compliance frameworks — PCI DSS, SOX, HIPAA, NIST 800-53 — not theoretical ones." },
+  { icon: Zap, title: "AI Security Automation", text: "Multi-agent systems that audit IAM, analyze CloudTrail, score risk in real time, and auto-remediate. I don't just use AI for security — I'm building agents that think about security." },
+  { icon: Code2, title: "AWS-Native Infrastructure", text: "Terraform IaC, EKS with RBAC, DevSecOps pipelines with triple-threat scanning, OIDC-only CI/CD. Production-grade cloud security from infrastructure to application layer." },
 ];
 
 export function About() {
@@ -31,7 +32,7 @@ export function About() {
     <section
       id="about"
       ref={ref}
-      className="scroll-mt-20 px-6 py-24 relative overflow-hidden"
+      className="scroll-mt-20 px-6 py-24 relative overflow-hidden bg-gradient-to-b from-indigo-50/30 via-slate-50 to-white"
     >
       <div className="mx-auto max-w-7xl relative">
         <motion.div
@@ -52,32 +53,39 @@ export function About() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="space-y-6"
           >
-            <p className="text-lg text-slate-900 leading-relaxed font-medium">
-              I&apos;m Bhavika — a <span className="text-amber-600">Cloud Security Engineer</span> who moved from auditing systems to building them.
+            <p className="text-lg text-slate-900 leading-relaxed font-bold">
+              I&apos;m Bhavika — a Cloud Security Engineer who spent 3 years auditing enterprise security controls, then started building the tools that would have made those audits obsolete.
             </p>
             <p className="text-slate-700 leading-relaxed">
-              I started in India at Cognizant, then came to the US for my Master&apos;s at Washington University in St. Louis. After graduation I did technology advisory and IT audit at FORVIS and Discover: control testing, risk matrices, and compliance work that showed me how often security breaks when it&apos;s manual and siloed.
+              At Discover Financial Services, I evaluated 40+ security controls across Business Continuity, InfoSec Governance, and Data Center Operations. At FORVIS, I designed risk/control matrices for $5M+ SOX engagements. That audit experience gave me something most security engineers lack: I know exactly what compliance teams need because I've been one.
             </p>
             <p className="text-slate-700 leading-relaxed">
-              When I hit a career pause (H-4), I turned it into a reset: 5 AWS certifications, 3 hackathon projects (Aegis IAM, Nova Sentinel, and more), and 8+ articles for AWS In Plain English and DevSecOps Community. I joined the AWS She Builds mentorship program and kept building. Now I&apos;m at SG Cloud Consulting building AI-powered security tools — the kind I wished we&apos;d had in audit.
+              Now I build AI-powered security automation on AWS. Aegis IAM uses multi-agent orchestration to turn natural language into least-privilege IAM policies and audit entire AWS accounts autonomously. Nova Sentinel coordinates 5 Amazon Nova models to resolve security incidents in under a minute. I write about cloud security and AI agents for publications reaching 3M+ monthly readers.
             </p>
 
             <div className="space-y-4 pt-2">
-              {highlights.map((item, i) => (
+              {highlights.map((item, i) => {
+                const accents = [
+                  "border-l-4 border-blue-500 bg-gradient-to-r from-blue-50/80 to-white hover:border-blue-400",
+                  "border-l-4 border-amber-500 bg-gradient-to-r from-amber-50/80 to-white hover:border-amber-400",
+                  "border-l-4 border-emerald-500 bg-gradient-to-r from-emerald-50/80 to-white hover:border-emerald-400",
+                ];
+                return (
                 <motion.div
                   key={i}
                   initial={{ opacity: 1, x: -10 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: -10 }}
                   transition={{ delay: 0.2 + i * 0.08 }}
-                  className="flex gap-4 items-start p-4 rounded-lg border border-slate-200 bg-white hover:border-amber-300 shadow-sm transition-colors"
+                  className={cn("flex gap-4 items-start p-4 rounded-lg border border-slate-200 shadow-sm transition-colors", accents[i])}
                 >
-                  <item.icon className="h-6 w-6 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <item.icon className={cn("h-6 w-6 flex-shrink-0 mt-0.5", i === 0 && "text-blue-600", i === 1 && "text-amber-600", i === 2 && "text-emerald-600")} />
                   <div>
                     <h4 className="font-semibold text-slate-900 text-sm mb-1">{item.title}</h4>
                     <span className="text-slate-700 text-sm leading-relaxed">{item.text}</span>
                   </div>
                 </motion.div>
-              ))}
+              );
+              })}
             </div>
           </motion.div>
 

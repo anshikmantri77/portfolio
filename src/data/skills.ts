@@ -7,7 +7,14 @@ export const skills: SkillCategory[] = [
   {
     category: "Cloud & Security",
     skills: [
-      "AWS (IAM, KMS, GuardDuty, Security Hub, VPC, CloudTrail, Config, Bedrock)",
+      "AWS IAM",
+      "AWS KMS",
+      "GuardDuty",
+      "Security Hub",
+      "VPC",
+      "CloudTrail",
+      "AWS Config",
+      "Amazon Bedrock",
       "Azure",
       "Terraform",
       "Docker",

@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Cloud, Server, Cpu, Code, Shield } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
-import { Badge } from "./ui/Badge";
 import { skills } from "@/data/skills";
 import { cn } from "@/lib/utils";
 
@@ -16,17 +15,28 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
   "Compliance": Shield,
 };
 
+const categoryStyles: Record<string, { gradient: string; border: string; icon: string; badge: string }> = {
+  "Cloud & Security": { gradient: "from-blue-500 to-cyan-500", border: "border-blue-200", icon: "text-blue-600", badge: "bg-blue-50 text-blue-700 border-blue-200" },
+  "AWS Services": { gradient: "from-indigo-500 to-purple-500", border: "border-indigo-200", icon: "text-indigo-600", badge: "bg-indigo-50 text-indigo-700 border-indigo-200" },
+  "AI & GenAI": { gradient: "from-amber-500 to-orange-500", border: "border-amber-200", icon: "text-amber-600", badge: "bg-amber-50 text-amber-700 border-amber-200" },
+  "Programming & Tools": { gradient: "from-emerald-500 to-teal-500", border: "border-emerald-200", icon: "text-emerald-600", badge: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+  "Compliance": { gradient: "from-violet-500 to-purple-500", border: "border-violet-200", icon: "text-violet-600", badge: "bg-violet-50 text-violet-700 border-violet-200" },
+};
+
 export function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
-  const [activeTab, setActiveTab] = useState(0);
-  const activeCategory = skills[activeTab];
+  const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
+
+  const filteredSkills = categoryFilter
+    ? skills.filter((s) => s.category === categoryFilter)
+    : skills;
 
   return (
     <section
       id="skills"
       ref={ref}
-      className="scroll-mt-20 px-6 py-24 bg-slate-50 relative overflow-hidden"
+      className="scroll-mt-20 px-6 py-24 bg-gradient-to-b from-slate-50 via-white to-violet-50/20 relative overflow-hidden"
     >
       <div className="mx-auto max-w-6xl relative">
         <motion.div
@@ -41,89 +51,85 @@ export function Skills() {
           />
         </motion.div>
 
-        {/* Mobile: Tabs + single content */}
-        <div className="md:hidden">
-          <motion.div
-            initial={{ opacity: 1, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 10 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-wrap gap-2 mb-4"
+        {/* Category filters */}
+        <motion.div
+          initial={{ opacity: 1, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 10 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="flex flex-wrap gap-2 mb-8"
+        >
+          <button
+            onClick={() => setCategoryFilter(null)}
+            className={cn(
+              "px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 shadow-sm",
+              !categoryFilter
+                ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white"
+                : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300 hover:shadow"
+            )}
           >
-            {skills.map((cat, index) => {
-              const Icon = categoryIcons[cat.category] ?? Code;
-              return (
-                <button
-                  key={cat.category}
-                  onClick={() => setActiveTab(index)}
-                  className={cn(
-                    "inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
-                    activeTab === index
-                      ? "bg-amber-500 text-white"
-                      : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300"
-                  )}
-                >
-                  <Icon className="h-4 w-4" />
-                  {cat.category}
-                </button>
-              );
-            })}
-          </motion.div>
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 1, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
-            className="rounded-xl border border-slate-200 bg-white p-5 min-h-[160px]"
-          >
-            <div className="flex items-center gap-3 mb-3">
-              {(() => {
-                const Icon = categoryIcons[activeCategory.category] ?? Code;
-                return (
-                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-2">
-                    <Icon className="h-5 w-5 text-amber-600" />
-                  </div>
-                );
-              })()}
-              <h3 className="font-heading text-lg font-semibold text-slate-900">
-                {activeCategory.category}
-              </h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {activeCategory.skills.map((skill) => (
-                <Badge key={skill} variant="outline" className="text-sm py-1.5 px-3 bg-slate-100 text-slate-800 border-slate-200">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+            All
+          </button>
+          {skills.map((cat) => (
+            <button
+              key={cat.category}
+              onClick={() => setCategoryFilter(cat.category)}
+              className={cn(
+                "px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200",
+                categoryFilter === cat.category
+                  ? "bg-amber-500 text-white border-amber-500 shadow-md"
+                  : "bg-white/80 text-slate-600 border border-slate-200 hover:border-slate-300 hover:shadow"
+              )}
+            >
+              {cat.category}
+            </button>
+          ))}
+        </motion.div>
 
-        {/* Desktop: All categories expanded in grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {skills.map((cat, index) => {
+        {/* Skill cards - premium grid layout */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredSkills.map((cat, index) => {
             const Icon = categoryIcons[cat.category] ?? Code;
+            const style = categoryStyles[cat.category] ?? categoryStyles["Cloud & Security"];
             return (
               <motion.div
                 key={cat.category}
-                initial={{ opacity: 1, y: 12 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 12 }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                className="rounded-xl border border-slate-200 bg-white p-5 hover:border-amber-300 hover:shadow-md transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="group"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-2">
-                    <Icon className="h-5 w-5 text-amber-600" />
+                <div className={cn(
+                  "h-full rounded-2xl overflow-hidden border bg-white shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-300/40 transition-all duration-300",
+                  style.border
+                )}>
+                  {/* Gradient header strip */}
+                  <div className={cn(
+                    "px-6 py-4 flex items-center gap-3 bg-gradient-to-r",
+                    style.gradient
+                  )}>
+                    <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                      <Icon className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="font-heading font-bold text-white text-lg">
+                      {cat.category}
+                    </h3>
                   </div>
-                  <h3 className="font-heading text-lg font-semibold text-slate-900">
-                    {cat.category}
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill) => (
-                    <Badge key={skill} variant="outline" className="text-sm py-1.5 px-3 bg-slate-100 text-slate-800 border-slate-200">
-                      {skill}
-                    </Badge>
-                  ))}
+                  {/* Skills - clean pill layout */}
+                  <div className="p-6">
+                    <div className="flex flex-wrap gap-2">
+                      {cat.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className={cn(
+                            "text-xs font-medium py-2 px-3 rounded-lg border transition-all duration-200 hover:scale-105 cursor-default",
+                            style.badge
+                          )}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             );

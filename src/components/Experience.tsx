@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
+import { cn } from "@/lib/utils";
 import { Card } from "./ui/Card";
 import { Badge } from "./ui/Badge";
 import { experience } from "@/data/experience";
@@ -15,7 +16,7 @@ export function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="scroll-mt-20 px-6 py-24 relative overflow-hidden"
+      className="scroll-mt-20 px-6 py-24 relative overflow-hidden bg-gradient-to-b from-emerald-50/20 via-white to-amber-50/20"
     >
       <div className="mx-auto max-w-4xl relative">
         <motion.div
@@ -53,7 +54,12 @@ export function Experience() {
 
               <Card
                 hover={!item.isTransition}
-                className={item.isTransition ? "bg-amber-50 border border-amber-200 rounded-lg" : ""}
+                className={cn(
+                  item.isTransition ? "bg-slate-50 border border-dashed border-slate-300 rounded-lg" : "border-l-4",
+                  !item.isTransition && index % 3 === 0 && "border-l-blue-500",
+                  !item.isTransition && index % 3 === 1 && "border-l-amber-500",
+                  !item.isTransition && index % 3 === 2 && "border-l-emerald-500"
+                )}
               >
                 {!item.isTransition && item.company && (
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
