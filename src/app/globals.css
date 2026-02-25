@@ -66,6 +66,26 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hero floating shapes animation */
+@keyframes float-drift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Hero circular badge slow rotation */
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Section scroll margin for sticky nav */
 section[id] {
   scroll-margin-top: 80px;
