@@ -77,12 +77,12 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-7xl w-full px-6 pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — Identity */}
+          {/* Left — Identity (first on mobile, left on desktop) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-6"
+            className="space-y-6 order-1"
           >
             <div className="flex items-center gap-6">
               <div className="relative flex-shrink-0">
@@ -166,12 +166,12 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right — Terminal */}
+          {/* Right — Terminal (second on mobile, right on desktop) */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="order-first lg:order-last"
+            className="order-2"
           >
             <TerminalBlock lines={heroTerminalLines} typingSpeed={35} />
           </motion.div>

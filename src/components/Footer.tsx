@@ -68,7 +68,7 @@ export function Footer() {
               <Send size={24} className="text-blue-400" />
             </div>
             <span className="text-slate-400 text-sm font-medium mb-3 text-center md:text-left">Connect</span>
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+            <div className="flex flex-nowrap justify-center md:justify-start gap-4">
               <a
                 href="https://github.com/bhavikam28"
                 target="_blank"
