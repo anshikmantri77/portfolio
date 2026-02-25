@@ -75,12 +75,6 @@ export function Education() {
                       <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
                         <Calendar className={cn("h-4 w-4", index === 0 ? "text-blue-500" : "text-violet-500")} />
                         <span>{item.dates}</span>
-                        {item.gpa && (
-                          <>
-                            <span className="text-slate-400">·</span>
-                            <span>{item.gpa}</span>
-                          </>
-                        )}
                       </div>
                       {item.highlights && item.highlights.length > 0 && (
                         <ul className="space-y-2.5">

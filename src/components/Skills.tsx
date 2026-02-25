@@ -15,12 +15,12 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
   "Compliance": Shield,
 };
 
-const categoryStyles: Record<string, { gradient: string; border: string; icon: string; badge: string }> = {
-  "Cloud & Security": { gradient: "from-blue-500 to-cyan-500", border: "border-blue-200", icon: "text-blue-600", badge: "bg-blue-50 text-blue-700 border-blue-200" },
-  "AWS Services": { gradient: "from-indigo-500 to-purple-500", border: "border-indigo-200", icon: "text-indigo-600", badge: "bg-indigo-50 text-indigo-700 border-indigo-200" },
-  "AI & GenAI": { gradient: "from-amber-500 to-orange-500", border: "border-amber-200", icon: "text-amber-600", badge: "bg-amber-50 text-amber-700 border-amber-200" },
-  "Programming & Tools": { gradient: "from-emerald-500 to-teal-500", border: "border-emerald-200", icon: "text-emerald-600", badge: "bg-emerald-50 text-emerald-700 border-emerald-200" },
-  "Compliance": { gradient: "from-violet-500 to-purple-500", border: "border-violet-200", icon: "text-violet-600", badge: "bg-violet-50 text-violet-700 border-violet-200" },
+const categoryStyles: Record<string, { iconBg: string; icon: string }> = {
+  "Cloud & Security": { iconBg: "bg-blue-50 border border-blue-200", icon: "text-blue-600" },
+  "AWS Services": { iconBg: "bg-indigo-50 border border-indigo-200", icon: "text-indigo-600" },
+  "AI & GenAI": { iconBg: "bg-amber-50 border border-amber-200", icon: "text-amber-600" },
+  "Programming & Tools": { iconBg: "bg-emerald-50 border border-emerald-200", icon: "text-emerald-600" },
+  "Compliance": { iconBg: "bg-violet-50 border border-violet-200", icon: "text-violet-600" },
 };
 
 export function Skills() {
@@ -98,37 +98,24 @@ export function Skills() {
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 className="group"
               >
-                <div className={cn(
-                  "h-full rounded-2xl overflow-hidden border bg-white shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-300/40 transition-all duration-300",
-                  style.border
-                )}>
-                  {/* Gradient header strip */}
-                  <div className={cn(
-                    "px-6 py-4 flex items-center gap-3 bg-gradient-to-r",
-                    style.gradient
-                  )}>
-                    <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-sm">
-                      <Icon className="h-5 w-5 text-white" />
+                <div className="rounded-xl border border-slate-200 border-l-4 border-l-amber-400 bg-gradient-to-r from-amber-50/30 to-white p-6 hover:shadow-md hover:border-amber-300 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center", style.iconBg)}>
+                      <Icon className={cn("h-5 w-5", style.icon)} />
                     </div>
-                    <h3 className="font-heading font-bold text-white text-lg">
+                    <h3 className="font-heading font-bold text-slate-900 text-lg">
                       {cat.category}
                     </h3>
                   </div>
-                  {/* Skills - clean pill layout */}
-                  <div className="p-6">
-                    <div className="flex flex-wrap gap-2">
-                      {cat.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className={cn(
-                            "text-xs font-medium py-2 px-3 rounded-lg border transition-all duration-200 hover:scale-105 cursor-default",
-                            style.badge
-                          )}
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="text-sm py-1.5 px-3 bg-amber-50/60 text-slate-700 border border-amber-200/60 rounded-lg hover:bg-amber-100 hover:border-amber-300 hover:text-amber-800 hover:scale-105 transition-all duration-200 cursor-default inline-block"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </motion.div>

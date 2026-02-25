@@ -94,7 +94,7 @@ export function Hero() {
               <span className="animate-pulse">|</span>
             </div>
             <p className="font-mono text-sm tracking-wide">
-              <span className="text-amber-600 font-semibold">5x AWS Certified</span>
+              <span className="text-amber-600 font-semibold">4x AWS Certified</span>
               <span className="text-slate-400 mx-2">|</span>
               <span className="text-slate-700">CISA</span>
               <span className="text-slate-400 mx-2">|</span>
