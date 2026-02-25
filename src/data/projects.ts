@@ -2,6 +2,8 @@ export interface Project {
   id: string;
   name: string;
   description: string;
+  /** Screenshot image path (e.g. /images/projects/aegis-iam-screenshot.png) */
+  screenshotUrl?: string;
   /** Big metric headline (e.g. "8 compliance frameworks • One-click remediation") */
   metricHeadline?: string;
   /** Short overview, 2 sentences max. */
@@ -29,6 +31,7 @@ export const projects: Project[] = [
     label: "AWS She Builds Capstone | AWS AI Agent Global Hackathon (Nov 2025)",
     featured: true,
     liveUrl: "https://aegis-iam.vercel.app",
+    screenshotUrl: "/images/projects/aegis-iam-screenshot.png",
     githubUrl: "https://github.com/bhavikam28/aegis-iam",
     techStack: ["React 18", "TypeScript", "FastAPI", "Amazon Bedrock", "Strands Agents SDK", "MCP", "CloudTrail", "Server-Sent Events"],
     features: [
@@ -52,6 +55,7 @@ export const projects: Project[] = [
     overview: "Nova Sentinel orchestrates five Amazon Nova models for end-to-end incident response: 90-day CloudTrail analysis, architecture diagram review, real-time risk scoring, and voice-driven investigation. A crypto-mining attack demo traces a 17-resource compromise in under a minute.",
     label: "Amazon Nova AI Hackathon (Mar 2026)",
     featured: true,
+    screenshotUrl: "/images/projects/nova-sentinel-screenshot.png",
     githubUrl: "https://github.com/bhavikam28/nova-sentinel",
     techStack: ["Amazon Nova AI (5 models)", "Python", "CloudTrail", "Multi-agent orchestration"],
     features: [
@@ -73,6 +77,7 @@ export const projects: Project[] = [
     description: "Comprehensive DevSecOps & Infrastructure Security portfolio — production-grade AWS with enterprise Terraform, EKS, and secure CI/CD.",
     metricHeadline: "Zero stored credentials in CI • 3 scanners + SBOM",
     overview: "Multi-tier VPC, EKS with RBAC, and three GitHub Actions pipelines using OIDC (no long-lived secrets). Trivy, Grype, and Snyk plus Syft SBOMs; CloudTrail, Config, and VPC Flow Logs for audit-ready infra.",
+    screenshotUrl: "/images/projects/awssecuritylab-screenshot.png",
     githubUrl: "https://github.com/bhavikam28/aws-security-lab",
     techStack: ["Terraform", "EKS", "Go", "Docker", "GitHub Actions", "Trivy", "Grype", "Snyk", "Syft"],
     features: [

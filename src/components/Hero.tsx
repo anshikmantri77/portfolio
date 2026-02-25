@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, ChevronDown } from "lucide-react";
 import { MediumIcon } from "./icons/MediumIcon";
 import { TerminalBlock, type TerminalLine } from "./TerminalBlock";
+import { motion } from "framer-motion";
 
 const typingPhrases = [
   "Securing AI agents on AWS",
@@ -59,100 +60,131 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[85vh] flex flex-col justify-center px-6 pt-20 pb-12 overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-violet-50/40"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
     >
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-violet-200/40 via-amber-100/30 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-pattern pointer-events-none" />
+      {/* Dark gradient background — security/tech feel */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800" />
 
-      <div className="relative mx-auto max-w-7xl w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
+      {/* Animated grid pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+        backgroundSize: "60px 60px"
+      }} />
+
+      {/* Ambient glow spots */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/8 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl w-full px-6 pt-24 pb-16">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left — Identity */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <div className="flex items-center gap-6">
               <div className="relative flex-shrink-0">
-                <div className="relative h-40 w-40 sm:h-48 sm:w-48 rounded-full overflow-hidden ring-4 ring-amber-400 ring-offset-4">
+                <div className="relative h-28 w-28 sm:h-32 sm:w-32 rounded-full overflow-hidden ring-2 ring-amber-400/60 ring-offset-4 ring-offset-slate-900">
                   <Image
                     src="/images/bhavika.png"
                     alt="Bhavika Mantri"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 640px) 160px, 192px"
+                    sizes="128px"
                     priority
                   />
                 </div>
+                {/* Status dot */}
+                <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-900" />
               </div>
-              <div className="flex-1 min-w-0 text-center sm:text-left space-y-2 flex flex-col items-center sm:items-start">
-                <span className="inline-block rounded-full border border-amber-300 bg-gradient-to-r from-amber-100 to-orange-50 px-4 py-1.5 text-xs font-semibold text-amber-800 tracking-wider">
+              <div>
+                <span className="inline-block rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-400 tracking-wider mb-2">
                   CLOUD SECURITY ENGINEER • AI SECURITY
                 </span>
-                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 font-heading tracking-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-heading tracking-tight">
                   Bhavika Mantri
                 </h1>
               </div>
             </div>
-            <div className="h-7 font-mono text-xl text-amber-600">
-              <span>{displayText}</span>
-              <span className="animate-pulse">|</span>
-            </div>
-            <p className="font-mono text-sm tracking-wide">
-              <span className="text-amber-600 font-semibold">4x AWS Certified</span>
-              <span className="text-slate-400 mx-2">|</span>
-              <span className="text-slate-700">CISA</span>
-              <span className="text-slate-400 mx-2">|</span>
-              <span className="text-slate-700">Terraform Associate</span>
-            </p>
 
+            {/* Typing effect */}
+            <div className="h-8 font-mono text-xl md:text-2xl text-amber-400">
+              <span>{displayText}</span>
+              <span className="animate-pulse text-amber-400">|</span>
+            </div>
+
+            {/* Credential chips */}
             <div className="flex flex-wrap gap-3">
+              {["4x AWS Certified", "CISA", "Terraform Associate"].map((cred, i) => (
+                <span key={cred} className={`text-sm font-mono px-3 py-1.5 rounded-lg border ${
+                  i === 0
+                    ? "bg-amber-500/15 border-amber-500/30 text-amber-300 font-semibold"
+                    : "bg-white/5 border-white/10 text-slate-300"
+                }`}>
+                  {cred}
+                </span>
+              ))}
+            </div>
+
+            {/* CTA buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-semibold bg-amber-500 text-white hover:bg-amber-600 transition-colors shadow-sm"
+                className="group inline-flex items-center gap-2 rounded-lg px-8 py-3.5 text-sm font-semibold bg-amber-500 text-white hover:bg-amber-400 transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:-translate-y-0.5"
               >
                 View Projects
+                <ChevronDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
               </a>
               <a
                 href="#articles"
-                className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-semibold border-2 border-blue-300 text-blue-700 hover:border-violet-500 hover:text-violet-600 hover:bg-violet-50/50 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg px-8 py-3.5 text-sm font-semibold border border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300"
               >
                 Read Articles
               </a>
             </div>
 
-            <div className="flex items-center gap-6 pt-2">
-              <a
-                href="https://github.com/bhavikam28"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-600 hover:text-amber-600 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github size={22} />
-              </a>
-              <a
-                href="https://linkedin.com/in/bhavikamantri"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-600 hover:text-amber-600 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={22} />
-              </a>
-              <a
-                href="https://medium.com/@bhavi.28.mantri"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-600 hover:text-amber-600 transition-colors"
-                aria-label="Medium"
-              >
-                <MediumIcon size={22} />
-              </a>
+            {/* Social links */}
+            <div className="flex items-center gap-5 pt-2">
+              {[
+                { href: "https://github.com/bhavikam28", icon: Github, label: "GitHub" },
+                { href: "https://linkedin.com/in/bhavikamantri", icon: Linkedin, label: "LinkedIn" },
+                { href: "https://medium.com/@bhavi.28.mantri", icon: MediumIcon, label: "Medium" },
+              ].map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-amber-400 transition-colors duration-300"
+                  aria-label={label}
+                >
+                  <Icon size={22} />
+                </a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right - Terminal */}
-          <div className="order-first lg:order-last">
+          {/* Right — Terminal */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="order-first lg:order-last"
+          >
             <TerminalBlock lines={heroTerminalLines} typingSpeed={35} />
-          </div>
+          </motion.div>
         </div>
 
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          <ChevronDown size={24} className="text-slate-500" />
+        </motion.div>
       </div>
     </section>
   );

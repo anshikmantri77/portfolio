@@ -24,8 +24,8 @@ export function Education() {
     >
       <div className="mx-auto max-w-5xl relative">
         <motion.div
-          initial={{ opacity: 1, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
@@ -41,8 +41,8 @@ export function Education() {
             return (
               <motion.article
                 key={item.id}
-                initial={{ opacity: 1, x: index % 2 === 0 ? -24 : 24 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: index % 2 === 0 ? -24 : 24 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -24 : 24 }}
                 transition={{ duration: 0.5, delay: index * 0.12 }}
                 className="group relative"
               >

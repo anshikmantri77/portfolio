@@ -58,9 +58,9 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-white/95 backdrop-blur-sm border-b border-slate-200"
+          ? "bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm"
           : "bg-transparent"
       )}
     >
@@ -69,7 +69,7 @@ export function Navbar() {
           href="#hero"
           className="text-lg font-bold font-mono tracking-tight hover:opacity-80 transition-opacity"
         >
-          <span className="text-slate-900">Bhavika</span>
+          <span className={scrolled ? "text-slate-900" : "text-white"}>Bhavika</span>
           <span className="text-amber-500">Mantri</span>
         </Link>
 
@@ -84,8 +84,8 @@ export function Navbar() {
                 className={cn(
                   "text-sm font-medium transition-colors",
                   isActive
-                    ? "text-amber-700"
-                    : "text-slate-700 hover:text-slate-900"
+                    ? scrolled ? "text-amber-700" : "text-amber-400"
+                    : scrolled ? "text-slate-700 hover:text-slate-900" : "text-slate-300 hover:text-white"
                 )}
               >
                 {item.label}
@@ -96,7 +96,7 @@ export function Navbar() {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 text-slate-900 hover:text-amber-700"
+          className={cn("md:hidden p-2", scrolled ? "text-slate-900 hover:text-amber-700" : "text-white hover:text-amber-400")}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >

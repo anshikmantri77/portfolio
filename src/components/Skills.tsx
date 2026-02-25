@@ -40,8 +40,8 @@ export function Skills() {
     >
       <div className="mx-auto max-w-6xl relative">
         <motion.div
-          initial={{ opacity: 1, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
@@ -53,8 +53,8 @@ export function Skills() {
 
         {/* Category filters */}
         <motion.div
-          initial={{ opacity: 1, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 10 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           className="flex flex-wrap gap-2 mb-8"
         >

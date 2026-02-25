@@ -24,13 +24,13 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bhavikamantri.vercel.app"),
-  title: "Bhavika Mantri — Cloud Security Engineer & AI Builder",
+  title: "Bhavika Mantri — Cloud Security Engineer & AI Security",
   description:
-    "Cloud Security Engineer building AI-powered security agents. 5x AWS Certified. Building autonomous IAM auditing, threat detection, and incident response platforms.",
+    "Cloud Security Engineer building AI-powered security agents. 4x AWS Certified, CISA, Terraform Associate.",
   openGraph: {
-    title: "Bhavika Mantri — Cloud Security Engineer & AI Builder",
+    title: "Bhavika Mantri — Cloud Security Engineer & AI Security",
     description:
-      "Cloud Security Engineer building AI-powered security agents. 5x AWS Certified.",
+      "Cloud Security Engineer building AI-powered security agents. 4x AWS Certified, CISA, Terraform Associate.",
     url: "https://bhavikamantri.vercel.app",
     images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },

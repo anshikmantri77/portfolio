@@ -45,12 +45,12 @@ export function Community() {
     <section
       id="community"
       ref={ref}
-      className="scroll-mt-20 px-6 py-24 bg-gradient-to-b from-white via-indigo-50/20 to-slate-50"
+      className="scroll-mt-20 px-6 py-24 bg-gradient-to-b from-white via-indigo-50/20 to-slate-50 relative overflow-hidden"
     >
       <div className="mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
@@ -65,7 +65,7 @@ export function Community() {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 16 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
               className={cn(
               "group rounded-xl border border-slate-200 p-6 hover:shadow-md transition-all duration-300 border-l-4",

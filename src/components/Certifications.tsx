@@ -32,8 +32,8 @@ export function Certifications() {
     >
       <div className="mx-auto max-w-7xl relative">
         <motion.div
-          initial={{ opacity: 1, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
@@ -44,8 +44,8 @@ export function Certifications() {
 
         {/* Category filters */}
         <motion.div
-          initial={{ opacity: 1, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 10 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           className="flex flex-wrap gap-2 mb-8"
         >
@@ -69,8 +69,8 @@ export function Certifications() {
           {filtered.map((cert, index) => (
             <motion.div
               key={cert.id}
-              initial={{ opacity: 1, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
             >
               <a
@@ -79,7 +79,7 @@ export function Certifications() {
                 rel="noopener noreferrer"
                 className="block h-full group"
               >
-                <div className="h-full rounded-xl border-2 border-slate-200 bg-gradient-to-b from-white to-amber-50/30 p-8 flex flex-col items-center text-center transition-all duration-300 hover:border-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.15)]">
+                <div className="h-full rounded-xl border-2 border-slate-200 bg-gradient-to-b from-white to-amber-50/30 p-8 flex flex-col items-center text-center transition-all duration-300 hover:border-amber-400 hover:shadow-[0_0_24px_rgba(245,158,11,0.2)] hover:-translate-y-1">
                   <div className="w-24 h-24 md:w-28 md:h-28 rounded-xl flex items-center justify-center mb-4 overflow-hidden bg-white border border-slate-200">
                     {cert.badgeImageUrl ? (
                       <img

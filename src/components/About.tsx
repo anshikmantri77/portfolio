@@ -14,7 +14,7 @@ const journeyLines: TerminalLine[] = [
   { text: "2019  WashU → M.Eng. + Cyber TA", type: "success" },
   { text: "2021  FORVIS → Tech Advisory", type: "default" },
   { text: "2022  Discover → IT Auditor", type: "default" },
-  { text: "2024  H-4 → Upskilling (5 certs, 3 projects)", type: "warning" },
+  { text: "2024  H-4 → Upskilling (6 certs, 3 projects)", type: "warning" },
   { text: "2025  SG Cloud → AI Security Builder", type: "success" },
 ];
 
@@ -36,8 +36,8 @@ export function About() {
     >
       <div className="mx-auto max-w-7xl relative">
         <motion.div
-          initial={{ opacity: 1, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
@@ -48,8 +48,8 @@ export function About() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <motion.div
-            initial={{ opacity: 1, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="space-y-6"
           >
@@ -73,8 +73,8 @@ export function About() {
                 return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 1, x: -10 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: -10 }}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                   transition={{ delay: 0.2 + i * 0.08 }}
                   className={cn("flex gap-4 items-start p-4 rounded-lg border border-slate-200 shadow-sm transition-colors", accents[i])}
                 >
@@ -90,8 +90,8 @@ export function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 1, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <TerminalBlock

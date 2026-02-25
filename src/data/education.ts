@@ -15,7 +15,6 @@ export const education: EducationItem[] = [
     degree: "M.Eng.",
     field: "Engineering Management (STEM)",
     dates: "2019–2021",
-    gpa: "3.72/4.00",
     highlights: [
       "Graduate Certificate in Cybersecurity Management",
       "Graduate Teaching Assistant (Cybersecurity)",

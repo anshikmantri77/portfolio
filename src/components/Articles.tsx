@@ -41,12 +41,14 @@ export function Articles() {
     <section
       id="articles"
       ref={ref}
-      className="scroll-mt-20 px-6 py-24 bg-gradient-to-b from-slate-50 via-purple-50/20 to-slate-50"
+      className="scroll-mt-20 px-6 py-24 bg-white relative"
     >
+      {/* Decorative top border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
       <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 1, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
@@ -60,8 +62,8 @@ export function Articles() {
           {articles.map((article, index) => (
             <motion.div
               key={article.id}
-              initial={{ opacity: 1, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
             >
               <a
@@ -123,8 +125,8 @@ export function Articles() {
         </div>
 
         <motion.div
-          initial={{ opacity: 1, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-12 text-center"
         >
