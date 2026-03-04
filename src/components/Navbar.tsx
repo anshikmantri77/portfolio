@@ -69,8 +69,7 @@ export function Navbar() {
           href="#hero"
           className="text-lg font-bold font-mono tracking-tight hover:opacity-80 transition-opacity"
         >
-          <span className={scrolled ? "text-slate-900" : "text-white"}>Bhavika</span>
-          <span className="text-amber-500">Mantri</span>
+          <span className={scrolled ? "text-slate-900" : "text-white"}>Bhavika </span><span className="text-amber-500">Mantri</span>
         </Link>
 
         {/* Desktop nav */}
