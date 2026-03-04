@@ -16,6 +16,7 @@ const journeyLines: TerminalLine[] = [
   { text: "2022  Discover → IT Auditor", type: "default" },
   { text: "2024  H-4 → Upskilling (6 certs, 3 projects)", type: "warning" },
   { text: "2025  SG Cloud → AI Security Builder", type: "success" },
+  { text: "2026  AWS Community Builder → Security (selected Mar 2026)", type: "success" },
 ];
 
 const highlights = [

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Users, PenTool, Award, Mic } from "lucide-react";
+import { Users, PenTool, Award, Mic, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "./SectionHeading";
 
@@ -24,7 +24,7 @@ const activities = [
   {
     icon: Mic,
     title: "AWS Hackathon Competitor",
-    description: "Competed in AWS AI Agent Global Hackathon (Nov 2025) and Amazon Nova AI Hackathon (Mar 2026), building production-grade security platforms.",
+    description: "Competed in AWS AI Agent Global Hackathon (Nov 2025). Selected for Amazon Nova AI Hackathon (Mar 2026), building production-grade security platforms.",
     date: "2025–2026",
     tag: "Hackathons",
   },
@@ -58,6 +58,41 @@ export function Community() {
             prefix="~/community$"
             subtitle="Teaching, writing, and building in public"
           />
+        </motion.div>
+
+        {/* AWS Community Builder — bigger banner + text box below */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-8"
+        >
+          <div className="rounded-t-2xl overflow-hidden border-2 border-b-0 border-orange-200">
+            <img
+              src="/images/certifications/aws-community-builder-marquee.png"
+              alt="AWS Community Builder"
+              className="w-full h-auto object-contain"
+            />
+          </div>
+          <a
+            href="https://aws.amazon.com/developer/community/community-builders/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-b-2xl border-2 border-t-0 border-orange-200 bg-gradient-to-r from-orange-50 via-amber-50/80 to-orange-50 px-6 py-5 hover:border-orange-400 hover:shadow-lg transition-all duration-300 group"
+          >
+            <span className="inline-block text-xs font-mono font-semibold text-orange-600 mb-1">
+              AWS Community Builder — Security
+            </span>
+            <p className="font-heading font-bold text-slate-900 text-lg mb-1">
+              Selected for the AWS Community Builder program
+            </p>
+            <p className="text-slate-600 text-sm mb-3">
+              Recognized for cloud security content, community engagement, and technical leadership.
+            </p>
+            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-orange-600">
+              Learn about the program <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </span>
+          </a>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-5">

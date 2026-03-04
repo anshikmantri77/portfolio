@@ -117,7 +117,7 @@ export function Hero() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {["4x AWS Certified", "CISA", "Terraform Associate"].map((cred, i) => (
+              {["AWS Community Builder", "4x AWS Certified", "CISA", "Terraform Associate"].map((cred, i) => (
                 <span
                   key={cred}
                   className={`text-sm font-mono px-3 py-1.5 rounded-lg border ${

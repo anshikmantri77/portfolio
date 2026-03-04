@@ -8,6 +8,8 @@ export interface Certification {
   badgeImageUrl?: string;
   /** Categories for filtering - cert can match multiple */
   categories?: string[];
+  /** Custom link label (default: "View on Credly") */
+  linkLabel?: string;
 }
 
 export const certifications: Certification[] = [

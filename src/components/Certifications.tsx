@@ -105,7 +105,7 @@ export function Certifications() {
                     </span>
                   )}
                   <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-amber-600">
-                    View on Credly <ExternalLink size={12} />
+                    {cert.linkLabel || "View on Credly"} <ExternalLink size={12} />
                   </span>
                 </div>
               </a>
