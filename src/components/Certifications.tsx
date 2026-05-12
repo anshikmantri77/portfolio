@@ -8,11 +8,10 @@ import { certifications } from "@/data/certifications";
 import { cn } from "@/lib/utils";
 
 const CATEGORIES = [
-  { id: "all", label: "All Certifications" },
-  { id: "security", label: "Security" },
-  { id: "aws", label: "AWS" },
-  { id: "ai", label: "AI" },
-  { id: "infrastructure", label: "Infrastructure" },
+  { id: "all", label: "All" },
+  { id: "cloud", label: "Cloud" },
+  { id: "ai", label: "AI/ML" },
+  { id: "data", label: "Data" },
 ] as const;
 
 export function Certifications() {
@@ -37,8 +36,8 @@ export function Certifications() {
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
-            title="Certifications"
-            subtitle="Verified credentials — click to view on Credly"
+            title="Certifications & Achievements"
+            subtitle="AWS Certified • Hackathon Finalist • Industry Courses"
           />
         </motion.div>
 
@@ -56,7 +55,7 @@ export function Certifications() {
               className={cn(
                 "px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
                 activeFilter === cat.id
-                  ? "bg-emerald-600 text-white shadow-sm"
+                  ? "bg-violet-600 text-white shadow-sm"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               )}
             >
@@ -79,7 +78,7 @@ export function Certifications() {
                 rel="noopener noreferrer"
                 className="block h-full group"
               >
-                <div className="h-full rounded-xl border-2 border-slate-200 bg-gradient-to-b from-white to-amber-50/30 p-8 flex flex-col items-center text-center transition-all duration-300 hover:border-amber-400 hover:shadow-[0_0_24px_rgba(245,158,11,0.2)] hover:-translate-y-1">
+                <div className="h-full rounded-xl border-2 border-slate-200 bg-gradient-to-b from-white to-violet-50/30 p-8 flex flex-col items-center text-center transition-all duration-300 hover:border-violet-400 hover:shadow-[0_0_24px_rgba(139,92,246,0.2)] hover:-translate-y-1">
                   <div className="w-24 h-24 md:w-28 md:h-28 rounded-xl flex items-center justify-center mb-4 overflow-hidden bg-white border border-slate-200">
                     {cert.badgeImageUrl ? (
                       <img
@@ -90,21 +89,21 @@ export function Certifications() {
                         decoding="async"
                       />
                     ) : (
-                      <Shield className="h-12 w-12 text-amber-700" />
+                      <Shield className="h-12 w-12 text-violet-600" />
                     )}
                   </div>
-                  <h3 className="font-heading font-bold text-slate-900 text-base mb-1 group-hover:text-amber-600 transition-colors line-clamp-2">
+                  <h3 className="font-heading font-bold text-slate-900 text-base mb-1 group-hover:text-violet-600 transition-colors line-clamp-2">
                     {cert.name}
                   </h3>
                   <p className="text-sm text-slate-500 mb-2">
                     {cert.issuer}
                   </p>
                   {cert.abbreviation && (
-                    <span className="font-mono text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full">
+                    <span className="font-mono text-xs font-bold text-violet-800 bg-violet-100 px-3 py-1 rounded-full">
                       {cert.abbreviation}
                     </span>
                   )}
-                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-amber-600">
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-violet-600">
                     {cert.linkLabel || "View on Credly"} <ExternalLink size={12} />
                   </span>
                 </div>
@@ -112,6 +111,49 @@ export function Certifications() {
             </motion.div>
           ))}
         </div>
+
+        {/* Hackathon Achievements */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12"
+        >
+          <h3 className="text-lg font-bold text-slate-900 mb-4 font-heading">🏆 Hackathon Achievements</h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                title: "Mindcare Hackathon",
+                result: "Top 5 Finalist",
+                detail: "Out of 200+ teams",
+                color: "border-violet-400 bg-violet-50",
+                badge: "bg-violet-100 text-violet-800",
+              },
+              {
+                title: "Amazon ML Hackathon",
+                result: "Participant",
+                detail: "Machine Learning Challenge",
+                color: "border-cyan-400 bg-cyan-50",
+                badge: "bg-cyan-100 text-cyan-800",
+              },
+            ].map((hack) => (
+              <div
+                key={hack.title}
+                className={`flex items-center gap-4 p-5 rounded-xl border-2 ${hack.color} transition-all duration-300 hover:-translate-y-0.5`}
+              >
+                <div className="flex-shrink-0">
+                  <span className={`font-mono text-xs font-bold px-3 py-1 rounded-full ${hack.badge}`}>
+                    {hack.result}
+                  </span>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 text-sm">{hack.title}</p>
+                  <p className="text-slate-500 text-xs">{hack.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

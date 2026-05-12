@@ -24,7 +24,7 @@ const typeColors: Record<string, string> = {
 };
 
 export function TerminalBlock({
-  title = "● ● ● bhavika@aws-security:~",
+  title = "anshik@portfolio:~",
   lines,
   className,
   startDelay = 800,

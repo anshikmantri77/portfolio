@@ -1,31 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { Github, Linkedin, ChevronDown } from "lucide-react";
-import { MediumIcon } from "./icons/MediumIcon";
+import { Github, Linkedin, ChevronDown, Mail, Phone } from "lucide-react";
 import { TerminalBlock, type TerminalLine } from "./TerminalBlock";
 import { motion } from "framer-motion";
 
 const typingPhrases = [
-  "Cloud Security Engineer",
-  "AI Security Builder",
-  "Cloud Architect",
-  "Audit-Informed Engineer",
+  "Backend Engineer",
+  "AI/ML Engineer",
+  "Software Development Engineer",
+  "Full-Stack Builder",
 ];
 
 const heroTerminalLines: TerminalLine[] = [
-  { text: "$ aws iam audit --account all", type: "command" },
-  { text: "→ Scanning 847 IAM policies...", type: "info" },
-  { text: "→ 23 unused permissions detected", type: "warning" },
-  { text: "→ 5 overly permissive roles found", type: "warning" },
-  { text: "→ Auto-remediation: ENABLED ✓", type: "success" },
-  { text: "→ Compliance score: 98/100", type: "success" },
+  { text: "$ fastapi run server.py --port 8000", type: "command" },
+  { text: "→ RAG pipeline initialized ✓", type: "success" },
+  { text: "→ ChromaDB vector store ready", type: "info" },
+  { text: "→ Ollama LLM (llama3) connected ✓", type: "success" },
   { text: "", type: "default" },
-  { text: "$ aegis-iam analyze --policy s3-readonly", type: "command" },
-  { text: "→ Risk level: LOW", type: "success" },
-  { text: "→ 8 compliance frameworks checked ✓", type: "success" },
-  { text: "→ PCI DSS: PASS | HIPAA: PASS | SOX: PASS", type: "success" },
+  { text: "$ python rag_pipeline.py --query 'stock analysis'", type: "command" },
+  { text: "→ Retrieving NIFTY/BSE 500 context...", type: "info" },
+  { text: "→ Risk score: LOW | Sharpe: 1.82 ✓", type: "success" },
+  { text: "→ Portfolio rebalancing: RECOMMENDED", type: "warning" },
+  { text: "→ Redis rate-limit: 60 req/min enforced ✓", type: "success" },
 ];
 
 export function Hero() {
@@ -75,12 +72,12 @@ export function Hero() {
       />
 
       {/* Ambient glow spots */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/8 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl w-full px-6 pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — Identity (circular photo + text) */}
+          {/* Left — Identity */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -89,40 +86,34 @@ export function Hero() {
           >
             <div className="flex items-center gap-6">
               <div className="relative flex-shrink-0">
-                <div className="relative h-[146px] w-[146px] sm:h-[166px] sm:w-[166px] rounded-full overflow-hidden ring-2 ring-amber-400/60 ring-offset-4 ring-offset-slate-900">
-                  <Image
-                    src="/images/bhavika.png"
-                    alt="Bhavika Mantri"
-                    fill
-                    className="object-cover"
-                    sizes="166px"
-                    priority
-                  />
+                {/* Avatar initials placeholder */}
+                <div className="relative h-[146px] w-[146px] sm:h-[166px] sm:w-[166px] rounded-full overflow-hidden ring-2 ring-violet-400/60 ring-offset-4 ring-offset-slate-900 bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center">
+                  <span className="text-white text-5xl font-bold font-heading select-none">AM</span>
                 </div>
                 <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-900" />
               </div>
               <div>
-                <span className="inline-block rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-400 tracking-wider mb-2">
-                  CLOUD SECURITY ENGINEER • AI SECURITY
+                <span className="inline-block rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold text-violet-400 tracking-wider mb-2">
+                  BACKEND ENGINEER • AI/ML ENGINEER
                 </span>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-heading tracking-tight whitespace-nowrap">
-                  Bhavika Mantri
+                  Anshik Mantri
                 </h1>
               </div>
             </div>
 
-            <div className="h-8 font-mono text-xl md:text-2xl text-amber-400">
+            <div className="h-8 font-mono text-xl md:text-2xl text-violet-400">
               <span>{displayText}</span>
-              <span className="animate-pulse text-amber-400">|</span>
+              <span className="animate-pulse text-violet-400">|</span>
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {["AWS Community Builder", "4x AWS Certified", "CISA", "Terraform Associate"].map((cred, i) => (
+              {["AWS CCP Certified", "VIT Chennai '25", "PharmEasy Intern", "Bengaluru"].map((cred, i) => (
                 <span
                   key={cred}
                   className={`text-sm font-mono px-3 py-1.5 rounded-lg border ${
                     i === 0
-                      ? "bg-amber-500/15 border-amber-500/30 text-amber-300 font-semibold"
+                      ? "bg-violet-500/15 border-violet-500/30 text-violet-300 font-semibold"
                       : "bg-white/5 border-white/10 text-slate-300"
                   }`}
                 >
@@ -134,35 +125,36 @@ export function Hero() {
             <div className="flex flex-wrap gap-4 pt-2">
               <a
                 href="#projects"
-                className="group inline-flex items-center gap-2 rounded-lg px-8 py-3.5 text-sm font-semibold bg-amber-500 text-white hover:bg-amber-400 transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-lg px-8 py-3.5 text-sm font-semibold bg-violet-600 text-white hover:bg-violet-500 transition-all duration-300 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 hover:-translate-y-0.5"
               >
                 View Projects
                 <ChevronDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
               </a>
               <a
-                href="#articles"
+                href="#experience"
                 className="inline-flex items-center gap-2 rounded-lg px-8 py-3.5 text-sm font-semibold border border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300"
               >
-                Read Articles
+                Experience
               </a>
             </div>
 
             <div className="flex items-center gap-5 pt-2">
               {[
-                { href: "https://github.com/bhavikam28", icon: Github, label: "GitHub" },
-                { href: "https://linkedin.com/in/bhavikamantri", icon: Linkedin, label: "LinkedIn" },
-                { href: "https://medium.com/@bhavi.28.mantri", icon: MediumIcon, label: "Medium" },
+                { href: "https://github.com/anshikmantri77", icon: Github, label: "GitHub" },
+                { href: "https://linkedin.com/in/anshikmantri", icon: Linkedin, label: "LinkedIn" },
+                { href: "mailto:anshikmantri@gmail.com", icon: Mail, label: "Email" },
+                { href: "tel:7023805961", icon: Phone, label: "+91-7023805961" },
               ].map(({ href, icon: Icon, label }) => (
                 <a
                   key={label}
                   href={href}
-                  target="_blank"
+                  target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-slate-400 hover:text-amber-400 transition-colors duration-300 text-base"
+                  className="inline-flex items-center gap-1.5 text-slate-400 hover:text-violet-400 transition-colors duration-300 text-base"
                   aria-label={label}
                 >
                   <Icon size={22} />
-                  <span>{label}</span>
+                  <span className="hidden sm:inline">{label}</span>
                 </a>
               ))}
             </div>

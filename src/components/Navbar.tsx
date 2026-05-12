@@ -10,11 +10,9 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Articles", href: "#articles" },
-  { label: "Certifications", href: "#certifications" },
   { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
-  { label: "Community", href: "#community" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -51,7 +49,7 @@ export function Navbar() {
     return () => observer.disconnect();
   }, [mobileOpen]);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = () => {
     setMobileOpen(false);
   };
 
@@ -69,7 +67,8 @@ export function Navbar() {
           href="#hero"
           className="text-lg font-bold font-mono tracking-tight hover:opacity-80 transition-opacity"
         >
-          <span className={scrolled ? "text-slate-900" : "text-white"}>Bhavika </span><span className="text-amber-500">Mantri</span>
+          <span className={scrolled ? "text-slate-900" : "text-white"}>Anshik </span>
+          <span className="text-violet-500">Mantri</span>
         </Link>
 
         {/* Desktop nav */}
@@ -83,7 +82,7 @@ export function Navbar() {
                 className={cn(
                   "text-sm font-medium transition-colors",
                   isActive
-                    ? scrolled ? "text-amber-700" : "text-amber-400"
+                    ? scrolled ? "text-violet-700" : "text-violet-400"
                     : scrolled ? "text-slate-700 hover:text-slate-900" : "text-slate-300 hover:text-white"
                 )}
               >
@@ -95,7 +94,7 @@ export function Navbar() {
 
         {/* Mobile menu button */}
         <button
-          className={cn("md:hidden p-2", scrolled ? "text-slate-900 hover:text-amber-700" : "text-white hover:text-amber-400")}
+          className={cn("md:hidden p-2", scrolled ? "text-slate-900 hover:text-violet-700" : "text-white hover:text-violet-400")}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -117,10 +116,10 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => handleNavClick(item.href)}
+                onClick={handleNavClick}
                 className={cn(
                   "text-lg font-medium transition-colors",
-                  isActive ? "text-amber-600 font-semibold" : "text-slate-600 hover:text-amber-600"
+                  isActive ? "text-violet-600 font-semibold" : "text-slate-600 hover:text-violet-600"
                 )}
               >
                 {item.label}

@@ -16,7 +16,7 @@ export function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="scroll-mt-20 px-6 py-24 relative overflow-hidden bg-gradient-to-b from-emerald-50/20 via-white to-amber-50/20"
+      className="scroll-mt-20 px-6 py-24 relative overflow-hidden bg-gradient-to-b from-violet-50/20 via-white to-cyan-50/20"
     >
       <div className="mx-auto max-w-4xl relative">
         <motion.div
@@ -27,13 +27,13 @@ export function Experience() {
           <SectionHeading
             title="Experience"
             prefix="~/experience$"
-            subtitle="From audit to automation"
+            subtitle="Production systems, AI pipelines, and data analytics"
           />
         </motion.div>
 
         <div className="relative space-y-8">
           {/* Timeline line */}
-          <div className="absolute left-4 top-0 bottom-0 w-0 border-l-2 border-amber-300 md:left-8" />
+          <div className="absolute left-4 top-0 bottom-0 w-0 border-l-2 border-violet-300 md:left-8" />
 
           {experience.map((item, index) => (
             <motion.div
@@ -45,10 +45,10 @@ export function Experience() {
             >
               {/* Timeline dot */}
               <div
-                className={`absolute left-1 top-6 w-3 h-3 rounded-full ring-4 ring-amber-100 md:left-6 ${
+                className={`absolute left-1 top-6 w-3 h-3 rounded-full ring-4 ring-violet-100 md:left-6 ${
                   item.isTransition
                     ? "bg-slate-400"
-                    : "bg-amber-500"
+                    : "bg-violet-500"
                 }`}
               />
 
@@ -76,7 +76,7 @@ export function Experience() {
                     className={`font-medium ${
                       item.isTransition
                         ? "text-slate-600 italic"
-                        : "text-amber-600"
+                        : "text-violet-600"
                     }`}
                   >
                     {item.role}
@@ -90,7 +90,7 @@ export function Experience() {
                 {item.skills.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4">
                     {item.skills.map((skill) => (
-                      <Badge key={skill} variant="outline" className="bg-amber-50 text-amber-800 border-amber-200 text-xs font-medium px-3 py-1 rounded-full">
+                      <Badge key={skill} variant="outline" className="bg-violet-50 text-violet-800 border-violet-200 text-xs font-medium px-3 py-1 rounded-full">
                         {skill}
                       </Badge>
                     ))}
@@ -99,7 +99,7 @@ export function Experience() {
                 {item.bullets.length > 0 && (
                   <>
                     {!item.isTransition && (
-                      <h4 className="text-sm font-semibold uppercase tracking-wider text-amber-600 mb-2">
+                      <h4 className="text-sm font-semibold uppercase tracking-wider text-violet-600 mb-2">
                         Key contributions
                       </h4>
                     )}
@@ -109,7 +109,7 @@ export function Experience() {
                           key={i}
                           className="text-sm text-slate-700 leading-relaxed flex gap-2.5"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1.5 shrink-0 inline-block" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-violet-400 mt-1.5 shrink-0 inline-block" />
                           <span>{bullet}</span>
                         </li>
                       ))}

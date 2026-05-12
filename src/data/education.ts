@@ -10,21 +10,14 @@ export interface EducationItem {
 
 export const education: EducationItem[] = [
   {
-    id: "washu",
-    institution: "Washington University in St. Louis",
-    degree: "M.Eng.",
-    field: "Engineering Management (STEM)",
-    dates: "2019–2021",
-    highlights: [
-      "Graduate Certificate in Cybersecurity Management",
-      "Graduate Teaching Assistant (Cybersecurity)",
-    ],
-  },
-  {
-    id: "nitj",
-    institution: "National Institute of Technology, Jalandhar",
+    id: "vit",
+    institution: "Vellore Institute of Technology, Chennai",
     degree: "B.Tech",
-    field: "Civil Engineering",
-    dates: "2014–2018",
+    field: "Computer Science Engineering",
+    dates: "2021 – 2025",
+    gpa: "8.1/10",
+    highlights: [
+      "Coursework: DSA, DBMS, Computer Networks, OS, OOP, Data Visualization, Distributed Systems, Statistics & Probability",
+    ],
   },
 ];
