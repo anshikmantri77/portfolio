@@ -1,8 +1,7 @@
-# Bhavika Mantri — Portfolio
+
 
 Modern personal portfolio showcasing cloud security engineering work, AI security projects, technical articles, certifications, and professional experience.
 
-**Live:** [technestbybhavika.com](https://technestbybhavika.com)
 
 ## Tech Stack
 
