@@ -13,24 +13,26 @@ const journeyLines: TerminalLine[] = [
   { text: "2024  HexaWealth → Data Analyst Intern", type: "default" },
   { text: "2025  Rofolin → AI/ML Engineer", type: "success" },
   { text: "2025  PharmEasy → Backend Dev Intern", type: "success" },
+  { text: "2026  Gigstaan → SDE-1", type: "success" },
   { text: "", type: "default" },
   { text: "// Projects", type: "info" },
   { text: "→  Local-Vault: Privacy-first RAG chatbot", type: "success" },
   { text: "→  StockSense AI: Real-time stock platform", type: "success" },
+  { text: "→  TripMind: Multi-agent AI travel planner", type: "success" },
   { text: "", type: "default" },
-  { text: "// Now: Building scalable APIs @ PharmEasy", type: "warning" },
+  { text: "// Now: Full-stack SDE @ Gigstaan", type: "warning" },
 ];
 
 const highlights = [
   {
     icon: Server,
     title: "Backend Engineering",
-    text: "Experienced in building distributed microservices with FastAPI, Node.js, and Spring Boot. Shipped production-grade B2B APIs at PharmEasy with Redis rate limiting, JWT security, and OWASP-aligned IDOR fixes.",
+    text: "Experienced in building distributed microservices with Node.js, FastAPI, and Spring Boot. Shipped full-stack features at Gigstaan with type-safe Kysely queries and validated PostgreSQL migrations, plus Redis rate limiting, JWT security, and OWASP-aligned IDOR fixes at PharmEasy.",
   },
   {
     icon: Brain,
     title: "AI/ML Systems",
-    text: "Built multi-agent LLM platforms and production RAG pipelines at Rofolin using FAISS, Sentence Transformers, LangChain, and Ollama. From prompt engineering to ChromaDB vector search at scale.",
+    text: "Built an LLM-powered matchmaking service on AWS Bedrock with pgvector HNSW retrieval and a weighted scoring model. Also shipped multi-agent LLM platforms and production RAG pipelines at Rofolin using FAISS, Sentence Transformers, LangChain, and Ollama.",
   },
   {
     icon: Database,
@@ -72,10 +74,10 @@ export function About() {
               I&apos;m Anshik — a Backend & AI/ML engineer from Bengaluru, passionate about building production-grade systems that sit at the intersection of scalable APIs and intelligent automation.
             </p>
             <p className="text-slate-700 leading-relaxed">
-              Currently interning at PharmEasy as a Backend Developer, I design B2B microservice APIs, implement Redis-based rate limiting, and enforce OWASP-aligned security. Previously at Rofolin, I built a multi-agent LLM automation platform and a production RAG pipeline — FAISS vector search + Sentence Transformers backed by a FastAPI service with real-time analytics.
+              Currently at Gigstaan as a Software Development Engineer I, I ship full-stack features end-to-end on a Next.js/React web app and React Native client. I build an LLM-powered matchmaking service on AWS Bedrock and pgvector with ranked, explained recommendations, and handled milestone-based payments & escrow workflows on Cashfree. Previously at PharmEasy, I designed B2B microservice APIs with Redis rate limiting and OWASP-aligned IDOR fixes, and at Rofolin I built a multi-agent LLM automation platform and a production RAG pipeline.
             </p>
             <p className="text-slate-700 leading-relaxed">
-              My projects reflect a full-stack AI mindset: Local-Vault is a privacy-first on-device RAG chatbot with ChromaDB and Ollama; StockSense AI is a real-time stock analysis platform powered by Gemini LLM, LangChain, and ML pipelines covering 500+ NIFTY/BSE equities. I graduated from VIT Chennai with a B.Tech in CS (GPA 8.1) and am AWS Cloud Practitioner certified.
+              My projects reflect a full-stack AI mindset: Local-Vault is a privacy-first on-device RAG chatbot with ChromaDB and Ollama; StockSense AI is a real-time stock analysis platform powered by Gemini LLM, LangChain, and ML pipelines covering 500+ NIFTY/BSE equities; and TripMind is a multi-agent AI travel planner with human-in-the-loop review built on LangGraph. I graduated from VIT Chennai with a B.Tech in CS (GPA 8.1) and am AWS Cloud Practitioner certified.
             </p>
 
             <div className="space-y-4 pt-2">

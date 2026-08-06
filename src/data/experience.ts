@@ -11,6 +11,19 @@ export interface ExperienceItem {
 
 export const experience: ExperienceItem[] = [
   {
+    id: "gigstaan",
+    company: "Gigstaan",
+    location: "Bengaluru, India",
+    role: "Software Development Engineer I (SDE-1)",
+    dates: "Jun 2026 – Present",
+    skills: ["Next.js", "React", "React Native", "TypeScript", "PostgreSQL", "Kysely", "AWS Bedrock", "pgvector", "Cashfree"],
+    bullets: [
+      "Full-Stack Delivery & Data Layer: Shipped 20+ end-to-end features across a Next.js/React web app and React Native client, exposing multi-tenant, role-scoped REST APIs from a single versioned contract; wrote type-safe Kysely queries and validated PostgreSQL migrations against production-like snapshots for zero-downtime releases.",
+      "Recommendation & Ranking Pipeline: Built an LLM-powered matchmaking service (AWS Bedrock, pgvector, PostgreSQL) turning natural-language requests into ranked, explained recommendations — HNSW approximate-nearest-neighbour retrieval over embeddings, then a deterministic weighted scoring model with Bayesian shrinkage on sparse ratings; ran embedding generation as an incremental batch pipeline with offline evaluation telemetry.",
+      "Payments & Escrow: Built milestone-based bidding and payout workflows on Cashfree — order creation, idempotent webhook reconciliation, refund and failure recovery — over a normalized PostgreSQL escrow ledger that kept freelancer–client transactions auditable.",
+    ],
+  },
+  {
     id: "pharmeasy",
     company: "PharmEasy",
     location: "Bengaluru, India",
