@@ -204,7 +204,7 @@ export function Projects() {
             {moreProjects.map((project, index) => (
               <a
                 key={project.id}
-                href={project.articleUrl || project.githubUrl}
+                href={project.articleUrl || project.liveUrl || project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
@@ -231,7 +231,11 @@ export function Projects() {
                   ))}
                 </div>
                 <span className="text-xs text-amber-600 font-medium">
-                  {project.articleUrl ? "Read Article →" : "View on GitHub →"}
+                  {project.articleUrl
+                    ? "Read Article →"
+                    : project.liveUrl
+                      ? "View Live →"
+                      : "View on GitHub →"}
                 </span>
               </a>
             ))}
